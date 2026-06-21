@@ -4,14 +4,18 @@ import 'package:tech_news_app/utils/colors.dart';
 
 class Searchbar extends StatefulWidget {
   final Function(String) onSearch;
-  const Searchbar({super.key, required this.onSearch});
+  final TextEditingController controllerr;
+  const Searchbar({
+    super.key,
+    required this.onSearch,
+    required this.controllerr,
+  });
 
   @override
   State<Searchbar> createState() => _SearchbarState();
 }
 
 class _SearchbarState extends State<Searchbar> {
-  final newsController = TextEditingController(text: '');
   late Future<List> news;
   @override
   void initState() {
@@ -28,7 +32,7 @@ class _SearchbarState extends State<Searchbar> {
           width: 310,
           height: 53,
           child: TextField(
-            controller: newsController,
+            controller: widget.controllerr,
             decoration: InputDecoration(
               filled: true,
               fillColor: Appcolors.darkgrey,
@@ -54,7 +58,7 @@ class _SearchbarState extends State<Searchbar> {
               // setState(() {
               //   news = fetchNews(newsController.text);
               // });
-              widget.onSearch(newsController.text);
+              widget.onSearch(widget.controllerr.text);
             },
             icon: Icon(Icons.search, color: Colors.white),
           ),

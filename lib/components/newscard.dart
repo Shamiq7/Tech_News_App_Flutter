@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_news_app/pages/detailspg.dart';
 import 'package:tech_news_app/utils/colors.dart';
 
 class Newscard extends StatefulWidget {
@@ -71,7 +72,15 @@ class _NewscardState extends State<Newscard> {
               ),
               SizedBox(height: 10),
               Center(
-                child: TextButton(onPressed: () {}, child: Text('Read More')),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Detailspg()),
+                    );
+                  },
+                  child: Text('Read More'),
+                ),
               ),
             ],
           ),

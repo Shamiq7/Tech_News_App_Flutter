@@ -31,3 +31,51 @@ class MyApp extends StatelessWidget {
 //api key from newsapp.org
 //test api at postman
 //got dependencies from pubdev
+
+
+
+
+
+
+
+
+// ================= HOW CALLBACKS WORK =================
+//
+// Use normal variables (String, Map, List) when passing DATA.
+//
+// Examples:
+// final String title;      -> one value
+// final Map article;       -> one object
+// final List articles;     -> many objects
+//
+// Use a Function when passing an ACTION.
+//
+// Example:
+// final Function(String) onSearch;
+//
+// We use onSearch because Searchbar does NOT own the news data.
+// The news Future and FutureBuilder live in Startpg.
+//
+// Flow:
+//
+// User types "apple"
+//        ↓
+// Searchbar
+//        ↓
+// widget.onSearch("apple")
+//        ↓
+// Startpg receives "apple"
+//        ↓
+// setState(() {
+//   news = fetchNews("apple");
+// })
+//        ↓
+// FutureBuilder rebuilds
+//        ↓
+// New articles appear
+//
+// Rule of thumb:
+// DATA   -> String, int, bool, Map, List
+// ACTION -> Function, VoidCallback, onTap, onPressed, onSearch
+//
+// ======================================================

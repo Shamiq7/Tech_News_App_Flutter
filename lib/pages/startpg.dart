@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_news_app/backend/newsfunc.dart';
 import 'package:tech_news_app/components/newscard.dart';
 import 'package:tech_news_app/components/searchbar.dart';
-import 'package:tech_news_app/modals/list.dart';
 import 'package:tech_news_app/utils/colors.dart';
-// import 'package:tech_news_app/utils/colors.dart';
-import 'package:tech_news_app/utils/text.dart';
 
 class Startpg extends StatefulWidget {
   const Startpg({super.key});
@@ -15,7 +12,7 @@ class Startpg extends StatefulWidget {
 }
 
 class _StartpgState extends State<Startpg> {
-  // final newsController = TextEditingController(text: '');
+  final newsController = TextEditingController(text: '');
   late Future<List> news;
 
   @override
@@ -45,6 +42,7 @@ class _StartpgState extends State<Startpg> {
               IconButton(
                 onPressed: () {
                   setState(() {
+                    newsController.clear();
                     news = fetchNews('technology');
                   });
                 },
@@ -61,6 +59,7 @@ class _StartpgState extends State<Startpg> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 10, 0),
               child: Searchbar(
+                controllerr: newsController,
                 onSearch: (value) {
                   setState(() {
                     news = fetchNews(value);
