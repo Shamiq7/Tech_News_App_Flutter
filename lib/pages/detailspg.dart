@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_news_app/utils/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Detailspg extends StatefulWidget {
   final Map detailItem;
@@ -10,6 +11,17 @@ class Detailspg extends StatefulWidget {
 }
 
 class _DetailspgState extends State<Detailspg> {
+  Future<void> openArticle() async {
+    print(widget.detailItem['url']);
+    final Uri url = Uri.parse(widget.detailItem['url']);
+    await launchUrl(url, mode: LaunchMode.externalApplication);
+    // if (await canLaunchUrl(url)) {
+    //   await launchUrl(url);
+    // } else {
+    //   throw Exception('Could not Launch');
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +92,12 @@ class _DetailspgState extends State<Detailspg> {
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(height: 20),
-                TextButton(onPressed: () {}, child: Text('Read More')),
+                TextButton(
+                  onPressed: () {
+                    openArticle();
+                  },
+                  child: Text('Read More'),
+                ),
                 SizedBox(height: 30),
               ],
             ),
