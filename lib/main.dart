@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
 //api key from newsapp.org
 //test api at postman
 //got dependencies from pubdev
+//add url launcher so that we can go from our app -> article 
 
 
 

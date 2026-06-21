@@ -61,28 +61,32 @@ class _NewscardState extends State<Newscard> {
           height: 300,
 
           padding: EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(item['title'] ?? '', style: TextStyle(fontSize: 20)),
-              SizedBox(height: 10),
-              Text(
-                item['description'] ?? 'No Description Available',
-                style: TextStyle(fontSize: 15),
-              ),
-              SizedBox(height: 10),
-              Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Detailspg()),
-                    );
-                  },
-                  child: Text('Read More'),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(item['title'] ?? '', style: TextStyle(fontSize: 20)),
+                SizedBox(height: 10),
+                Text(
+                  item['description'] ?? 'No Description Available',
+                  style: TextStyle(fontSize: 15),
                 ),
-              ),
-            ],
+                SizedBox(height: 10),
+                Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Detailspg(detailItem: item),
+                        ),
+                      );
+                    },
+                    child: Text('Read More'),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
