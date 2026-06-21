@@ -47,23 +47,19 @@ dependencies:
 
 ### Home Page
 
-![Home Page](images/img1.png)
+<p align="center">
+  <img src="images/img1.png" width="280">
+</p>
 
 The home page is the main screen of the application. It displays a list of the latest technology news articles fetched directly from the API.
-
-Features available on this screen:
-
-* Scrollable list of technology news
-* Article thumbnails
-* Article titles and publishing dates
-* Search bar for custom news searches
-* Refresh button to reload the latest articles
 
 ---
 
 ### Article Preview Bottom Sheet
 
-![Bottom Sheet Preview](images/img2.png)
+<p align="center">
+  <img src="images/img2.png" width="280">
+</p>
 
 When a user taps on any news article, a bottom sheet appears showing:
 
@@ -71,15 +67,14 @@ When a user taps on any news article, a bottom sheet appears showing:
 * Short description
 * View More button
 
-This allows users to quickly preview the article without leaving the home screen.
-
 ---
 
 ### Article Details Page
 
-![Details Page](images/img3.png)
-
-![Details Page Continued](images/img4.png)
+<p align="center">
+  <img src="images/img3.png" width="280">
+  <img src="images/img4.png" width="280">
+</p>
 
 Selecting **View More** from the bottom sheet opens a dedicated details page.
 
@@ -92,35 +87,35 @@ The details page displays:
 * Description
 * Article content
 
-All information displayed on this page is loaded dynamically from the NewsAPI response.
-
 ---
 
 ### Official Article Website
 
-![Official Website](images/img5.png)
+<p align="center">
+  <img src="images/img5.png" width="280">
+</p>
 
-When the user clicks the **Read More** button on the details page, the application launches the article URL using the device's default browser.
-
-This takes the user directly to the official website that originally published the article, allowing them to read the complete article.
+When the user clicks the **Read More** button on the details page, the application launches the article URL in the device's default browser.
 
 ---
 
 ### Search Functionality
 
-![Search Example 1](images/img6.png)
-
-![Search Example 2](images/img7.png)
+<p align="center">
+  <img src="images/img6.png" width="280">
+  <img src="images/img7.png" width="280">
+</p>
 
 The search feature allows users to find news related to a specific topic, company, or person.
 
 For example:
 
-* Searching for **Elon Musk**
+* Searching for Elon Musk
 * Searching for a technology company
 * Searching for a specific technology trend
 
 The application fetches and displays only the articles relevant to the entered search query.
+
 
 ---
 
