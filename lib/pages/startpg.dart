@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_news_app/backend/newsfunc.dart';
+import 'package:tech_news_app/components/newscard.dart';
 import 'package:tech_news_app/modals/list.dart';
 import 'package:tech_news_app/utils/colors.dart';
 // import 'package:tech_news_app/utils/colors.dart';
@@ -29,8 +30,8 @@ class _StartpgState extends State<Startpg> {
       appBar: AppBar(
         title: Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(width: 123),
               Text(
                 'Tech',
                 style: TextStyle(color: Appcolors.primary, fontSize: 30),
@@ -38,6 +39,15 @@ class _StartpgState extends State<Startpg> {
               Text(
                 'Newz',
                 style: TextStyle(color: Appcolors.white, fontSize: 30),
+              ),
+              SizedBox(width: 65),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    news = fetchNews('technology');
+                  });
+                },
+                icon: Icon(Icons.refresh),
               ),
             ],
           ),
@@ -116,49 +126,7 @@ class _StartpgState extends State<Startpg> {
                   print(snapshot.data);
                   List articles = snapshot.data!;
 
-                  return ListView.builder(
-                    itemCount: articles.length,
-                    itemBuilder: (context, index) {
-                      final item = articles[index];
-                      return Column(
-                        children: [
-                          ListTile(
-                            leading: Container(
-                              height: 60,
-                              width: 80,
-                              color: Colors.grey.shade100,
-                              child: item['urlToImage'] != null
-                                  ? Image.network(
-                                      item['urlToImage'],
-                                      fit: BoxFit.fill,
-                                    )
-                                  : Image.asset(
-                                      'images/pic3.png',
-                                      fit: BoxFit.fill,
-                                    ),
-                            ),
-                            title: Text(
-                              item['title'] ?? '',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ),
-                            subtitle: Text(
-                              item['publishedAt'],
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.grey,
-                            thickness: 1,
-                            indent: 20,
-                            endIndent: 20,
-                          ),
-                        ],
-                      );
-                    },
-                  );
+                  return Newscard(newsitem: articles);
                 },
               ),
             ),
