@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tech_news_app/utils/colors.dart';
 
 class Newscard extends StatefulWidget {
   final List newsitem;
-  const Newscard({super.key,required this.newsitem});
+  const Newscard({super.key, required this.newsitem});
 
   @override
   State<Newscard> createState() => _NewscardState();
@@ -18,6 +19,9 @@ class _NewscardState extends State<Newscard> {
         return Column(
           children: [
             ListTile(
+              onTap: () {
+                _bottomsheet(context, item);
+              },
               leading: Container(
                 height: 60,
                 width: 80,
@@ -45,6 +49,34 @@ class _NewscardState extends State<Newscard> {
         );
       },
     );
-    ;
+  }
+
+  void _bottomsheet(BuildContext context, Map item) async {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          color: Appcolors.darkgrey,
+          height: 300,
+
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(item['title'] ?? '', style: TextStyle(fontSize: 20)),
+              SizedBox(height: 10),
+              Text(
+                item['description'] ?? 'No Description Available',
+                style: TextStyle(fontSize: 15),
+              ),
+              SizedBox(height: 10),
+              Center(
+                child: TextButton(onPressed: () {}, child: Text('Read More')),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
